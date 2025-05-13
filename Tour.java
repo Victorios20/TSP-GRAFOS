@@ -126,30 +126,78 @@ public class Tour {
         newNode.next = bestNode.next;
         bestNode.next = newNode;
     }
+    public static void main(String[] args) {
+    if (args.length == 0) {
+        StdOut.println("Uso: java Tour <arquivo-de-pontos.txt>");
+        return;
+    }
 
-public static void main(String[] args) {
-    // define 4 pontos
-    Point a = new Point(1.0, 1.0);
-    Point b = new Point(1.0, 4.0);
-    Point c = new Point(4.0, 4.0);
-    Point d = new Point(4.0, 1.0);
-    Point e = new Point(2.5, 3.0);
+    In in = new In(args[0]);
+    Tour tour = new Tour();
 
-    // cria o ciclo a -> b -> c -> d -> a
-    Tour tour = new Tour(a, b, c, d);
+    while (!in.isEmpty()) {
+        double x = in.readDouble();
+        double y = in.readDouble();
+        Point p = new Point(x, y);
+        tour.insertSmallest(p); // ou insertNearest(p)
+    }
 
-    // insere pelo menor aumento
-    tour.insertSmallest(e);
-
-    // imprime resultados
-    StdOut.println("Após insertSmallest:");
+    StdOut.println("Tamanho final = " + tour.size());
+    StdOut.println("Comprimento final = " + tour.length());
     StdOut.println(tour);
-    StdOut.println("Comprimento = " + tour.length());
 
-    // desenha
-    StdDraw.setXscale(0, 6);
-    StdDraw.setYscale(0, 6);
+    StdDraw.setXscale(0, 1000); // ajuste conforme seus dados
+    StdDraw.setYscale(0, 1000);
     tour.draw();
 }
+
+
+    // public static void main(String[] args) {
+    //     Point a = new Point(1.0, 1.0);
+    //     Point b = new Point(1.0, 4.0);
+    //     Point c = new Point(4.0, 4.0);
+    //     Point d = new Point(4.0, 1.0);
+
+    //     Tour tour = new Tour(a, b, c, d);
+    //     StdOut.println("# de pontos = " + tour.size());
+    //     StdOut.println("Comprimento do ciclo = " + tour.length());
+    //     StdOut.println(tour);
+
+    //     StdDraw.setXscale(0, 6);
+    //     StdDraw.setYscale(0, 6);
+    //     tour.draw();
+
+    //     Point e = new Point(5.0, 6.0);
+    //     tour.insertNearest(e);
+    //     tour.insertSmallest(new Point(2.0, 2.0));
+    //     StdOut.println("Novo tamanho = " + tour.size());
+    //     StdOut.println("Novo comprimento = " + tour.length());
+    //     tour.draw();
+    // }
+
+//     public static void main(String[] args) {
+//     // define 4 pontos
+//     Point a = new Point(1.0, 1.0);
+//     Point b = new Point(1.0, 4.0);
+//     Point c = new Point(4.0, 4.0);
+//     Point d = new Point(4.0, 1.0);
+//     Point e = new Point(2.5, 3.0);
+
+//     // cria o ciclo a -> b -> c -> d -> a
+//     Tour tour = new Tour(a, b, c, d);
+
+//     // insere pelo menor aumento
+//     tour.insertSmallest(e);
+
+//     // imprime resultados
+//     StdOut.println("Após insertSmallest:");
+//     StdOut.println(tour);
+//     StdOut.println("Comprimento = " + tour.length());
+
+//     // desenha
+//     StdDraw.setXscale(0, 6);
+//     StdDraw.setYscale(0, 6);
+//     tour.draw();
+// }
 
 }

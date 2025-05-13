@@ -41,11 +41,11 @@
              tour.insertSmallest(p);
  
              // descomente as 4 linhas abaixo para animar
-             // StdDraw.clear();
-             // tour.draw();
-             // StdDraw.textLeft(20, 0, "comprimento = " + tour.length());
-             // StdDraw.show();
-             // StdDraw.pause(50);
+             StdDraw.clear();
+             tour.draw();
+             StdDraw.textLeft(20, 0, "comprimento = " + tour.length());
+             StdDraw.show();
+             StdDraw.pause(50);
          }
  
          // desenhar no quadro padrão
